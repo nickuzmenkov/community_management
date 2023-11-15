@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "community-management"
+version = "0.1.0"
+description = "Sample Community Management Backend Written with Python and FastAPI"
+authors = ["Nick Kuzmenkov <nickuzmenkov@yahoo.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "community_management"}]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = "^0.23.2"
+SQLAlchemy = "^2.0.22"
+psycopg2-binary = "^2.9.9"
+
+[tool.poetry.group.tests]
+optional = true
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+ruff = "^0.1.3"
+
+[tool.ruff]
+line-length = 140
+

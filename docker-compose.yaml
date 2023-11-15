@@ -1,0 +1,29 @@
+version: '3'
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOSTNAME=db
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8000/healthcheck || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
