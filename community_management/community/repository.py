@@ -9,6 +9,7 @@ from community_management.community.community import CommunityTable
 
 class CommunityRepository:
     def __init__(self) -> None:
+        # TODO: тут надо переписать на получение AsyncSession
         hostname = os.environ.get("DATABASE_HOSTNAME", "localhost")
         self._engine = create_engine(url=f"postgresql+psycopg2://admin:admin@{hostname}:5432/admin")
         CommunityTable.metadata.create_all(self._engine)

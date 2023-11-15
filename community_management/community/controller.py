@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from community_management.community.service import CommunityService, CommunityNotFoundError
-from community_management.community.community import CommunityModel, CommunityInputModel
+from community_management.community.schemas import CommunityModel, CommunityInputModel
 
 community_router = APIRouter(prefix="/communities")
 
 
 @community_router.post("/")
+# TODO: async
 def create_community(community: CommunityInputModel, service: CommunityService = Depends(CommunityService)) -> CommunityModel:
     return service.add(community)
 
