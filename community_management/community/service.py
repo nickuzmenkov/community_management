@@ -1,4 +1,4 @@
-from community_management.community.community import CommunityInputModel, CommunityModel
+from community_management.community.schemas import CommunityInputModel, CommunityModel
 from community_management.community.repository import CommunityRepository
 
 
